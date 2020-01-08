@@ -52,6 +52,10 @@
             type: "POST",
             url: "https://onesignal.com/api/v1/notifications",
             data: data,
+            headers: {
+                Authorization: "Basic OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni",
+                "Content-Type": "application/json"     
+            },
             dataType: "application/json"
         }).done((resp) => {
             console.log(resp);
