@@ -54,9 +54,10 @@
             data: data,
             headers: {
                 Authorization: "Basic OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni",
-                "Content-Type": "application/json"     
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            dataType: "application/json"
+            dataType: "json"
         }).done((resp) => {
             console.log(resp);
         }).fail((e) => {
