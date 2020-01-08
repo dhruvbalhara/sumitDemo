@@ -1,0 +1,98 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Checkout example · Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" > 
+
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="./css/form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+  <div class="py-5 text-center">
+    <h2>Nuclear Push Device</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="mb-3">Dhakka</h4>
+      <form class="needs-validation" novalidate>
+
+        <div class="mb-3">
+          <label for="heading">Heading</label>
+          <input type="text" class="form-control" id="heading" placeholder="Text which will come in bold" required>
+          <div class="invalid-feedback">
+            Please enter heading text for push notification.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="textContent">Content</label>
+          <textarea class="form-control" id="textContent" rows="3"></textarea>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="sendAfter">Send After</label> <br/>
+          <input type="datetime-local" id="sendAfter" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" min="2019-01-01T08:30" required>
+        </div>
+
+        <hr class="mb-4">
+        <div class="app-env-checkbox">
+            <div class="custom-control custom-checkbox u-ib">
+                <input type="checkbox" class="custom-control-input" id="app1" name="app-env" value="app1">
+                <label class="custom-control-label" for="app1">App1</label>
+            </div>
+            <div class="custom-control custom-checkbox u-ib">
+                <input type="checkbox" class="custom-control-input" id="app2" name="app-env" value="app2">
+                <label class="custom-control-label" for="app2">App2</label>
+            </div>
+            <div class="custom-control custom-checkbox u-ib">
+                <input type="checkbox" class="custom-control-input" id="app3" name="app-env" value="app3">
+                <label class="custom-control-label" for="app3">App3</label>
+            </div>
+            <div class="custom-control custom-checkbox u-ib">
+                <input type="checkbox" class="custom-control-input" id="app4" name="app-env" value="app4">
+                <label class="custom-control-label" for="app4">App4</label>
+            </div>
+        </div>
+        
+        <hr class="mb-4">
+
+        <button class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+
+      </form>
+    </div>
+  </div>
+  
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="./js/bootstrap.js"></script>
+<script src="./js/form-validation.js"></script></body>
+</html>

@@ -1,0 +1,17 @@
+.container {
+  max-width: 960px;
+}
+
+.lh-condensed { line-height: 1.25; }
+
+.u-ib {
+    display: inline-block;
+}
+
+.custom-checkbox {
+    margin-left: 20px;
+}
+
+.custom-checkbox:first-child {
+    margin-left: 0px;
+}
