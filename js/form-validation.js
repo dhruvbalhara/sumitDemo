@@ -51,13 +51,11 @@
         $.ajax({
             type: "POST",
             url: "https://onesignal.com/api/v1/notifications",
-            data: $.param(data),
+            data: JSON.stringify(data),
             headers: {
                 Authorization: "Basic OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni",
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            dataType: "json"
+                'Content-Type': 'application/json'
+            }
         }).done((resp) => {
             console.log(resp);
         }).fail((e) => {
