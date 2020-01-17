@@ -32,6 +32,10 @@
 //     \"included_segments\" : [\"All\"]
 // }
 
+    const appIdList = {
+        app1: "9f6eb-8b53-4b80-b3d2-d0f290a38f58"
+    };
+
 
     $("#submit").on("click", (e) => {
         e.preventDefault();
@@ -40,28 +44,36 @@
         let textContent = $("#textContent").val();
         let sendAfter = $("#sendAfter").val();
 
+        let checkedList = $("input[name=app-env]:checked");
 
-        let data = {
-            app_id: "9f6eb-8b53-4b80-b3d2-d0f290a38f58",
-            headings: { en: heading },
-            contents: { en: textContent || "" },
-            send_after: new Date(sendAfter).toUTCString()
-        };
-
-        $.ajax({
-            type: "POST",
-            url: "https://onesignal.com/api/v1/notifications",
-            data: JSON.stringify(data),
-            dataType: 'jsonp',
-            headers: {
-                Authorization: "Basic OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni",
-                'Content-Type': 'application/json'
+        for (let i=0; i < checkedList.length; i++) {
+            let appId = appIdList[checkedList[i].value];
+            if (appId && heading && sendAfter) {
+                let data = {
+                    app_id: appId,
+                    headings: { en: heading },
+                    contents: { en: textContent || "" },
+                    send_after: new Date(sendAfter).toUTCString(),
+                    included_segments: ["All"]
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "https://onesignal.com/api/v1/notifications",
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    headers: {
+                        Authorization: "Basic OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni",
+                        "Content-Type": "application/json"
+                    }
+                })
+                .done(resp => {
+                    console.log(resp);
+                })
+                .fail(e => {
+                    console.log(e);
+                });
             }
-        }).done((resp) => {
-            console.log(resp);
-        }).fail((e) => {
-            console.log(e);
-        })
+        }
     });
 
   }, false)
