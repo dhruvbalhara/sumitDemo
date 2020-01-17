@@ -33,7 +33,26 @@
 // }
 
     const appIdList = {
-        app1: "9f6eb-8b53-4b80-b3d2-d0f290a38f58"
+        app1: {
+            id: "9f6eb-8b53-4b80-b3d2-d0f290a38f58",
+            authToken: "OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni"
+        },
+        app2: {
+            id: "9f6eb-8b53-4b80-b3d2-d0f290a38f58",
+            authToken: "OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni"
+        },
+        app3: {
+            id: "9f6eb-8b53-4b80-b3d2-d0f290a38f58",
+            authToken: "OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni"
+        },
+        app4: {
+            id: "9f6eb-8b53-4b80-b3d2-d0f290a38f58",
+            authToken: "OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni"
+        },
+        app5: {
+            id: "9f6eb-8b53-4b80-b3d2-d0f290a38f58",
+            authToken: "OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni"
+        }
     };
 
 
@@ -45,35 +64,42 @@
         let sendAfter = $("#sendAfter").val();
 
         let checkedList = $("input[name=app-env]:checked");
-
-        for (let i=0; i < checkedList.length; i++) {
-            let appId = appIdList[checkedList[i].value];
-            if (appId && heading && sendAfter) {
-                let data = {
-                    app_id: appId,
-                    headings: { en: heading },
-                    contents: { en: textContent || "" },
-                    send_after: new Date(sendAfter).toUTCString(),
-                    included_segments: ["All"]
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "https://onesignal.com/api/v1/notifications",
-                    data: JSON.stringify(data),
-                    dataType: "json",
-                    headers: {
-                        Authorization: "Basic OGJlOGJlZDYtYjEwOC00OTk3LTg0NGEtNjU2NzlmM2NmN2Ni",
-                        "Content-Type": "application/json"
-                    }
-                })
-                .done(resp => {
-                    console.log(resp);
-                })
-                .fail(e => {
-                    console.log(e);
-                });
+        try {
+            for (let i = 0; i < checkedList.length; i++) {
+                let selectedEnv = appIdList[checkedList[i].value];
+                let appId = selectedEnv.id;
+                if (appId && heading && sendAfter) {
+                    let data = {
+                        app_id: appId,
+                        headings: { en: heading },
+                        contents: { en: textContent || "" },
+                        send_after: new Date(sendAfter).toUTCString(),
+                        included_segments: ["All"]
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "https://onesignal.com/api/v1/notifications",
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        headers: {
+                            Authorization: "Basic " + selectedEnv.authToken,
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .done(resp => {
+                        alert(resp);
+                    })
+                    .fail(e => {
+                        alert(e);
+                    });
+                } else {
+                    alert("appId && heading && sendAfter check kar lo");
+                }
             }
+        } catch(e) {
+            alert(e);
         }
+
     });
 
   }, false)
